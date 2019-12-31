@@ -8,5 +8,10 @@ describe("Homepage tests", () => {
     const { getByTestId } = render(<Home />)
     const homeContainer = getByTestId("homeContainer")
     expect(homeContainer).toBeInTheDocument()
+  });
+  it("Header renders", () => {
+    const { getByTestId } = render(<Home />)
+    const headerContainer = getByTestId("headerContainer")
+    expect(headerContainer).toBeInTheDocument()
   })
 })
