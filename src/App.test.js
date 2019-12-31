@@ -2,11 +2,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-describe("Toggle Component", () => {
+describe("App compiles", () => {
   // check that the toggle container shows up in the page
-  it("Toggle compiles", () => {
+  it("App container compiles", () => {
     const { getByTestId } = render(<App />)
-    const welcomeTitle = getByTestId("welcomeTitle")
-    expect(welcomeTitle).toBeInTheDocument()
+    const appContainer = getByTestId("appContainer")
+    expect(appContainer).toBeInTheDocument()
   })
 })

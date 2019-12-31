@@ -1,15 +1,17 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <header>
-        <h1 data-testid="welcomeTitle">
-          Welcome to NWS
-        </h1>
-      </header>
-    </div>
+    <main data-testid="appContainer">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
+    </main>
   );
-}
+};
 
 export default App;
