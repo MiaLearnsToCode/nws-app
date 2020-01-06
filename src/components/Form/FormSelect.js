@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
@@ -12,6 +11,7 @@ const FormSelect = ({selectOptions}) => {
       components={animatedComponents}
       isMulti
       options={selectOptions}
+      styles={{ multiValueLabel: styles => ({ ...styles, backgroundColor: '#00FFB2' }), multiValueRemove: styles => ({ ...styles, backgroundColor: '#00FFB2' }),}}
     />
   );
 }

@@ -4,8 +4,8 @@ import {languages, countries, topics} from '../../components/Form/FormData'
 
 const Home = () => {
   return (
-    <div data-testid="homeContainer">
-      <header data-testid="headerContainer">
+    <div data-testid='homeContainer'>
+      <header data-testid='headerContainer'>
         <h1>WELCOME TO NWS</h1>
         <p>tell us what you want to read</p>
       </header>
@@ -16,6 +16,7 @@ const Home = () => {
         <FormSelect selectOptions={[...countries]}/>
         <label>Topics</label>
         <FormSelect selectOptions={[...topics]}/>
+        <button data-testid='formButton'>Let&apos;s Go</button>
       </form>
       
     </div>
