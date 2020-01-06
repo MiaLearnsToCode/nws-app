@@ -328,7 +328,6 @@ export const countries = [
 
 export const topics = [
 { label: 'world', value: 'world' },
-{ label: 'nation', value:	'nation'},
 { label: 'business', value: 'business' },
 { label: 'technology', value:	'technology'},
 { label: 'entertainment', value:	'entertainment'},
