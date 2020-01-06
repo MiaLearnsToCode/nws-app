@@ -1,15 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useRoutes } from 'hookrouter';
 import Home from './pages/Home/Home';
+import News from './pages/News/News';
+
+const routes = {
+  "/": () => <Home />,
+  "/news": () => <News />
+};
 
 const App = () => {
+  const routeResult = useRoutes(routes);
   return (
     <main data-testid='appContainer'>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/' component={Home} />
-        </Switch>
-      </BrowserRouter>
+      {routeResult}
     </main>
   );
 };
