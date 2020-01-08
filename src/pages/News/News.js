@@ -1,26 +1,10 @@
-import React, {useState, useEffect} from "react";
-import { languages, countries, topics } from '../../components/Form/FormData';
+import React from "react";
+import HttpSources from "../../components/Http/HttpSources";
 
 const News = () => {
-  const token = process.env.REACT_APP_GNEWS
   const languagesArray = JSON.parse(localStorage.getItem('languagesChosen'))
   const countriesArray = JSON.parse(localStorage.getItem('countriesChosen'))
-  const topicsArray = JSON.parse(localStorage.getItem('topicsChosen'))
-
-  const [articles, setData] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await fetch(`https://restcountries.eu/rest/v2/all`)
-        const articles = await res.json()
-        setData(articles)
-      } catch {
-        console.log('error')
-      }
-    }
-    getData()
-    
-  }, []);
+  const categoriesArray  = JSON.parse(localStorage.getItem('categoriesChosen'))
 
   return (
     <div data-testid='newsContainer'>
@@ -29,21 +13,15 @@ const News = () => {
         <h2>Your Headlines - Fast</h2>
       </header>
       {
-        topicsArray.map(topic => {
-          return <div key={topic}>{topic}</div>
+        categoriesArray.map(category => {
+          return countriesArray.map(country => {
+            return languagesArray.map(language => {
+              return <HttpSources key={language} language={language} country={country} category={category}></HttpSources>
+            })
+          })
         })
       }
-      {
-        countriesArray.map(country => {
-          const countryLabel = countries.find(countryObj => countryObj.value === country).label
-          return <div key={country}>{countryLabel}</div>
-        })
-      }
-      {
-        articles && articles.map(article => {
-          return <div key={article.name}>{article.name}</div>
-        })
-      }
+      
     </div>
   );
 };

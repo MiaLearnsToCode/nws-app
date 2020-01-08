@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { navigate } from 'hookrouter';
 import FormSelect from '../../components/Form/FormSelect'
-import {languages, countries, topics} from '../../components/Form/FormData'
+import {languages, countries, categories} from '../../components/Form/FormData'
 
-const Home = ({history}) => {
+const Home = () => {
   const [languagesChosen, handleChangeLanguages] = useState([]);
   const [countriesChosen, handleChangeCountries] = useState([]);
-  const [topicsChosen, handleChangeTopics] = useState([]);
+  const [categoriesChosen, handleChangeCategories] = useState([]);
 
   const submitForm = (e) => {
     e.preventDefault()
-    console.log('now')
     localStorage.setItem("languagesChosen", JSON.stringify(languagesChosen));
     localStorage.setItem("countriesChosen", JSON.stringify(countriesChosen));
-    localStorage.setItem("topicsChosen", JSON.stringify(topicsChosen));
+    localStorage.setItem("categoriesChosen", JSON.stringify(categoriesChosen));
     navigate('/news');
   }
-  console.log(languagesChosen, topicsChosen, countriesChosen);
 
   return (
     <div data-testid='homeContainer'>
@@ -30,7 +28,7 @@ const Home = ({history}) => {
         <label>Countries</label>
         <FormSelect selectOptions={[...countries]} onChange={(e) => handleChangeCountries(e.map(option => option.value))}/>
         <label>Topics</label>
-        <FormSelect selectOptions={[...topics]} onChange={(e) => handleChangeTopics(e.map(option => option.value))}/>
+        <FormSelect selectOptions={[...categories]} onChange={(e) => handleChangeCategories(e.map(option => option.value))}/>
         <button data-testid='formButton' onClick={(e) => submitForm(e)}>Let&apos;s Go</button>
       </form>
       

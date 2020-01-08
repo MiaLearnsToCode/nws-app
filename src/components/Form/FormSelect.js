@@ -6,7 +6,6 @@ const animatedComponents = makeAnimated();
 
 const FormSelect = ({selectOptions, onChange}) => {
 
-  
   return (
     <Select
       closeMenuOnSelect={false}
