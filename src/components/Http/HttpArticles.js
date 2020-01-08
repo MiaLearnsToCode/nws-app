@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Article from './../Article/Article'
 
-const HttpArticles = ({ source }) => {
+const HttpArticles = ({ source, category }) => {
 
   const token = process.env.REACT_APP_NEWS
   const [articles, setData] = useState([]);
@@ -25,7 +26,7 @@ const HttpArticles = ({ source }) => {
       {console.log(articles)}
       {
         articles.map((article, i) => {
-        return <h1 key={i}>{article.title}</h1>
+        return <Article key={i} category={category} article={article}/>
         })
       }
       <br></br>

@@ -27,7 +27,7 @@ const HttpSources = ({ language, country, category}) => {
     <div>
       {
         sources.map(source => {
-          return <HttpArticles key={source} source={source}/>
+          return <HttpArticles key={source} source={source} category={category}/>
         })
       }
     </div>
