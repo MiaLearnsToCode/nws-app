@@ -13,7 +13,7 @@ const News = () => {
         <h2>Your Headlines - Fast</h2>
       </header>
       {
-        categoriesArray.map(category => {
+        categoriesArray && countriesArray && languagesArray && categoriesArray.map(category => {
           return countriesArray.map(country => {
             return languagesArray.map((language, i) => {
               return <Http key={i} language={language} country={country} category={category}></Http>
