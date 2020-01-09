@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Article from './../Article/Article'
+import Newsfeed from "../Newsfeed/Newsfeed";
 
-const Http = ({ language, country, category }) => {
+const Http = ({ language, country, category, chosenCategory }) => {
 
   const token = process.env.REACT_APP_NEWS
   const [articles, setData] = useState([]);
@@ -9,9 +9,16 @@ const Http = ({ language, country, category }) => {
   useEffect(() => {
     const getArticlesData = async (source) => {   
       try {
+        console.log('make request articles')
         const res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source.id}&apiKey=${token}`)
         let articles = await res.json()
-        setData(articles.articles)
+        articles = articles.articles.map(article => {
+          article.country = country
+          article.category = category
+          return article
+        })
+        console.log(articles)
+        if (articles.length) setData(articles)
       } catch(error) {
         console.log(error)
       }
@@ -33,11 +40,7 @@ const Http = ({ language, country, category }) => {
 
   return (
     <div>
-      {
-        articles.map((article, i) => {
-          return <Article key={i} category={category} country={country} article={article} />
-        })
-      }
+      <Newsfeed chosenCategory={chosenCategory} articles={articles}/>
     </div>
   )
 }
