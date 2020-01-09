@@ -1,5 +1,5 @@
 import React from "react";
-import HttpSources from "../../components/Http/HttpSources";
+import Http from "../../components/Http/Http";
 
 const News = () => {
   const languagesArray = JSON.parse(localStorage.getItem('languagesChosen'))
@@ -15,8 +15,8 @@ const News = () => {
       {
         categoriesArray.map(category => {
           return countriesArray.map(country => {
-            return languagesArray.map(language => {
-              return <HttpSources key={language} language={language} country={country} category={category}></HttpSources>
+            return languagesArray.map((language, i) => {
+              return <Http key={i} language={language} country={country} category={category}></Http>
             })
           })
         })
