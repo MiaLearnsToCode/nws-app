@@ -11,8 +11,8 @@ const News = () => {
     <div data-testid='newsContainer'>
       <header data-testid='headerContainer'>
         <h1>NWS</h1>
-        <h2>Your Headlines - Fast</h2>
-        <nav data-testid='navContainer'>
+        <h2>Your Headlines</h2>
+        <nav className="center" data-testid='navContainer'>
           {
             categoriesArray && categoriesArray.map((category,i) => {
               return <button onClick={() => pickCategory(category)} key={i}>{category}</button>

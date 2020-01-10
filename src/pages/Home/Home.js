@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div data-testid='homeContainer'>
-      <header data-testid='headerContainer'>
+      <header className="center" data-testid='headerContainer'>
         <h1>WELCOME TO NWS</h1>
         <p>tell us what you want to read</p>
       </header>
@@ -29,7 +29,10 @@ const Home = () => {
         <FormSelect selectOptions={[...countries]} onChange={(e) => handleChangeCountries(e.map(option => option.value))}/>
         <label>Topics</label>
         <FormSelect selectOptions={[...categories]} onChange={(e) => handleChangeCategories(e.map(option => option.value))}/>
-        <button data-testid='formButton' onClick={(e) => submitForm(e)}>Let&apos;s Go</button>
+        <div className="center">
+          <button data-testid='formButton' onClick={(e) => submitForm(e)}>Let&apos;s Go</button>
+        </div>
+        
       </form>
       
     </div>
