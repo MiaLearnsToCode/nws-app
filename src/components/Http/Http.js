@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Newsfeed from "../Newsfeed/Newsfeed";
 
-const Http = ({ language, country, category, chosenCategory }) => {
+const Http = ({ language, country, category, chosenCategory, handleClick }) => {
 
   const token = process.env.REACT_APP_NEWS
   const [articles, setData] = useState([]);
@@ -40,7 +40,7 @@ const Http = ({ language, country, category, chosenCategory }) => {
 
   return (
     <div>
-      <Newsfeed chosenCategory={chosenCategory} articles={articles}/>
+      <Newsfeed chosenCategory={chosenCategory} articles={articles} handleClick={handleClick}/>
     </div>
   )
 }

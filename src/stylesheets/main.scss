@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap');
 @import 'home/home';
 @import 'news/news';
+@import 'news/article';
 
 $title: 'Raleway', sans-serif;
 $text: 'Montserrat', sans-serif;
@@ -8,6 +9,10 @@ $text: 'Montserrat', sans-serif;
 html, body {
   background-color: #faf8f86e;
   text-shadow: 3px 3px 5px white;
+}
+
+button {
+  cursor: pointer;
 }
 
 .center {

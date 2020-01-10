@@ -1,0 +1,64 @@
+$title: 'Raleway', sans-serif;
+$text: 'Montserrat', sans-serif;
+$green: #00FFB2;
+$dark-grey: #696969;
+$grey: #e9e9e9;
+
+.article {
+  padding: 20px 30px;
+  color: $dark-grey;
+  font-weight: bold;
+  a {
+    font-family: $text;
+    font-size: 18px;
+    line-height: 35px;
+    text-decoration: none;
+    color: $dark-grey;
+    cursor: pointer;
+  }
+  h3 {
+    font-family: $title;
+    font-size: 15px;
+    color: $green;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+  .toggle-button {
+    font-family: $text;
+    font-size: 18px;
+    background-color: $green;
+    border: 1px solid $green;
+    border-radius: 50%;
+  }
+  .category-button {
+    background-color: $green;
+    font-family: $text;
+    border: 1px solid $green;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 12px;
+  }
+  p {
+    font-family: $text;
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .article {
+    padding: 40px 30px;
+    a {
+      font-size: 25px;
+      line-height: 40px;
+    }
+    h3 {
+      font-size: 18px;
+      letter-spacing: 5px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+}

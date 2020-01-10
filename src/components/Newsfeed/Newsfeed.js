@@ -1,15 +1,14 @@
 import React from "react";
 import Article from "../Article/Article";
 
-const Newsfeed = ({articles, chosenCategory}) => {
+const Newsfeed = ({articles, chosenCategory, handleClick}) => {
   
   const filteredArticles = chosenCategory ? articles.filter(article => article.category === chosenCategory) : articles 
-  console.log(filteredArticles)
   return (
     <div data-testid='newsfeedContainer'>
       {
         filteredArticles.map((article, i) => {
-          return <Article key={i} article={article} />
+          return <Article key={i} article={article} handleClick={handleClick}/>
         })
       }
     </div>
