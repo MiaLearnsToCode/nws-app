@@ -1,24 +1,28 @@
 import React, { useState } from "react";
+import StyledArticle from '../styled-components/StyledArticle'
+import ToggleButton from '../styled-components/styled-buttons/ToggleButton'
+import CategoryButton from '../styled-components/styled-buttons/CategoryButton'
 
 const Article = ({ article, handleClick }) => {
 
   const [show, toggleShow] = useState(false);
-
+  
   return (
-    <div className="article" data-testid='articleContainer'>
+    <StyledArticle data-testid='articleContainer'>
+      <img src={article.urlToImage} alt={article.title}/>
       <h2><a href={article.url} rel="noopener noreferrer" target="_blank">{article.title}</a></h2>
       <h3>{article.source.name}</h3>
-      <button className="toggle-button" data-testid='toggleButton' onClick={() => toggleShow(!show)}>
+      <ToggleButton data-testid='toggleButton' onClick={() => toggleShow(!show)}>
         +
-      </button>
+      </ToggleButton>
       {
         show && 
         <div data-testid='toggleDescription'>
           <p>{article.description}</p>
-          <button className="category-button" onClick={() => handleClick(article.category)}>{article.category}</button>
+          <CategoryButton onClick={() => handleClick(article.category)}>{article.category}</CategoryButton>
         </div>
       }
-    </div>
+    </StyledArticle>
   )
 }
 

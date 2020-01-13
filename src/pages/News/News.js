@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+
+// styled components
+import Header from '../../components/styled-components/Header'
+import CategoryButton from '../../components/styled-components/styled-buttons/CategoryButton'
+
+// other components
 import Http from "../../components/Http/Http";
 
 const News = () => {
@@ -14,17 +20,17 @@ const News = () => {
 
   return (
     <div data-testid='newsContainer'>
-      <header data-testid='headerContainer'>
+      <Header data-testid='headerContainer'>
         <h1>NWS</h1>
         <h2>Your Headlines</h2>
         <nav className="center" data-testid='navContainer'>
           {
             categoriesArray && categoriesArray.map((category,i) => {
-              return <button onClick={() => handleClick(category)} key={i}>{category}</button>
+              return <CategoryButton onClick={() => handleClick(category)} key={i}>{category}</CategoryButton>
             })
           }
         </nav>
-      </header>
+      </Header>
       <div className="news-feed">
         {
           categoriesArray && countriesArray && languagesArray && categoriesArray.map(category => {
