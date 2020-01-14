@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 const StyledArticle = styled.div`
   padding: 50px 30px;
-  color: #696969;
+  color: ${props => props.theme.text};
   a {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     line-height: 35px;
-    color: #696969;
+    color: ${props => props.theme.text};
     cursor: pointer;
   }
   h3 {

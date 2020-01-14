@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { navigate } from 'hookrouter';
 
 // styled components
-import Header from '../../components/styled-components/Header'
-import Form from '../../components/styled-components/Form'
-import SubmitButton from '../../components/styled-components/styled-buttons/SubmitButton'
+import Header from '../../components/styled-components/Header';
+import Form from '../../components/styled-components/Form';
+import SubmitButton from '../../components/styled-components/styled-buttons/SubmitButton';
 
 // other components
-import FormSelect from '../../components/Form/FormSelect'
-import {languages, countries, categories} from '../../components/Form/FormData'
+import FormSelect from '../../components/Form/FormSelect';
+import {languages, countries, categories} from '../../components/Form/FormData';
 
 const Home = () => {
   const [languagesChosen, handleChangeLanguages] = useState([]);
@@ -17,15 +17,15 @@ const Home = () => {
 
   const submitForm = (e) => {
     e.preventDefault()
-    localStorage.setItem("languagesChosen", JSON.stringify(languagesChosen));
-    localStorage.setItem("countriesChosen", JSON.stringify(countriesChosen));
-    localStorage.setItem("categoriesChosen", JSON.stringify(categoriesChosen));
+    localStorage.setItem('languagesChosen', JSON.stringify(languagesChosen));
+    localStorage.setItem('countriesChosen', JSON.stringify(countriesChosen));
+    localStorage.setItem('categoriesChosen', JSON.stringify(categoriesChosen));
     navigate('/news');
-  }
+  };
 
   return (
     <div data-testid='homeContainer'>
-      <Header className="center" data-testid='headerContainer'>
+      <Header className='center' data-testid='headerContainer'>
         <h1>WELCOME TO NWS</h1>
         <p>tell us what you want to read</p>
       </Header>
@@ -36,7 +36,7 @@ const Home = () => {
         <FormSelect selectOptions={[...countries]} onChange={(e) => handleChangeCountries(e.map(option => option.value))}/>
         <label>Topics</label>
         <FormSelect selectOptions={[...categories]} onChange={(e) => handleChangeCategories(e.map(option => option.value))}/>
-        <div className="center">
+        <div className='center'>
           <SubmitButton data-testid='formButton' onClick={(e) => submitForm(e)}>Let&apos;s Go</SubmitButton>
         </div>
         

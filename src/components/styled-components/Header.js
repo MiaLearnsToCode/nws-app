@@ -14,7 +14,7 @@ const Header = styled.header`
   }
   h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #807f7f;
+    color: ${props => props.theme.text};
     font-size: 20px;
     line-height: 40px;
     letter-spacing: 5px;
@@ -22,7 +22,7 @@ const Header = styled.header`
   }
   p {
     font-family: 'Montserrat', sans-serif;
-    color: #807f7f;
+    color: ${props => props.theme.text};
     font-size: 20px;
     line-height: 40px;
     letter-spacing: 5px;

@@ -1,29 +1,38 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { navigate } from 'hookrouter';
 
 // styled components
 import Header from '../../components/styled-components/Header'
 import CategoryButton from '../../components/styled-components/styled-buttons/CategoryButton'
+import SubmitButton from '../../components/styled-components/styled-buttons/SubmitButton'
 
 // other components
-import Http from "../../components/Http/Http";
+import Http from '../../components/Http/Http';
 
 const News = () => {
-  const languagesArray = JSON.parse(localStorage.getItem('languagesChosen'))
-  const countriesArray = JSON.parse(localStorage.getItem('countriesChosen'))
-  const categoriesArray  = JSON.parse(localStorage.getItem('categoriesChosen'))
+  const languagesArray = JSON.parse(localStorage.getItem('languagesChosen'));
+  const countriesArray = JSON.parse(localStorage.getItem('countriesChosen'));
+  const categoriesArray  = JSON.parse(localStorage.getItem('categoriesChosen'));
   const [chosenCategory, pickCategory] = useState();
-  
+
+  const resetLocalStorage = () => {
+    localStorage.removeItem('languagesChosen');
+    localStorage.removeItem('countriesChosen');
+    localStorage.removeItem('topicsChosen');
+    navigate('/preferences');
+  };
+
   const handleClick = (category) => {
-    window.scrollTo(0, 0)
-    pickCategory(category)
-  }
+    window.scrollTo(0, 0);
+    pickCategory(category);
+  };
 
   return (
     <div data-testid='newsContainer'>
       <Header data-testid='headerContainer'>
         <h1>NWS</h1>
         <h2>Your Headlines</h2>
-        <nav className="center" data-testid='navContainer'>
+        <nav className='center' data-testid='navContainer'>
           {
             categoriesArray && categoriesArray.map((category,i) => {
               return <CategoryButton onClick={() => handleClick(category)} key={i}>{category}</CategoryButton>
@@ -31,7 +40,7 @@ const News = () => {
           }
         </nav>
       </Header>
-      <div className="news-feed">
+      <div className='news-feed'>
         {
           categoriesArray && countriesArray && languagesArray && categoriesArray.map(category => {
             return countriesArray.map(country => {
@@ -42,7 +51,9 @@ const News = () => {
           })
         }
       </div>
-      
+      <div className='center'>
+        <SubmitButton onClick={resetLocalStorage}>My Newsfeed Settings</SubmitButton>
+      </div>
       
     </div>
   );

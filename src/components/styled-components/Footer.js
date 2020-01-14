@@ -7,14 +7,14 @@ const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
-  color: #696969;
+  color: ${props => props.theme.text};;
   font-size: 15px;
   margin-top: 50px;
   text-align: center;
   padding: 20px;
   line-height: 30px;
   a {
-    color: #696969;
+    color: ${props => props.theme.text};;
   }
 `;
 

@@ -1,9 +1,9 @@
-import React from "react";
-import Article from "../Article/Article";
+import React from 'react';
+import Article from '../Article/Article';
 
 const Newsfeed = ({articles, chosenCategory, handleClick}) => {
   
-  const filteredArticles = chosenCategory ? articles.filter(article => article.category === chosenCategory) : articles 
+  const filteredArticles = chosenCategory ? articles.filter(article => article.category === chosenCategory) : articles ;
   return (
     <div data-testid='newsfeedContainer'>
       {
