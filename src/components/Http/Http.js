@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { get } from 'axios';
 import Newsfeed from '../Newsfeed/Newsfeed';
 import { navigate } from 'hookrouter';
 
@@ -24,9 +25,8 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
     // 2. Get the top headlines from the sources returned from getSourcesData
     const getArticlesData = memoize(async (source) => {
       try {
-        const res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source.id}&apiKey=${token}`);
-        let articles = await res.json();
-        articles = articles.articles.map(article => {
+        const { data } = await get(`https://newsapi.org/v2/top-headlines?sources=${source.id}&apiKey=${token}`);
+        let articles = data.articles.map(article => {
           article.country = country;
           article.category = category;
           return article;
@@ -40,8 +40,8 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
     // 1. first I need to get the sources that may include articles with the user's choices
     const getSourcesData = memoize(async (language, country, category) => {
       try {
-        const res = await fetch(`https://newsapi.org/v2/sources?language=${language}&country=${country}&category=${category}&apiKey=${token}`)
-        let { sources } = await res.json()
+        const { data } = await get(`https://newsapi.org/v2/sources?language=${language}&country=${country}&category=${category}&apiKey=${token}`)
+        let { sources } = data.sources
         if (sources.length) return sources
       } catch (error) {
         navigate('/error')

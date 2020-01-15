@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NWS
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and consumes the News Api (https://newsapi.org/docs). I undertook this project to push my understanding of test driven development, React Hooks, styled components and caching and also to practice using the React Select library I have been contributing to through open source.
 
 ## Available Scripts
 
@@ -17,52 +19,78 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## User Experience
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When the user first lands on the website they have to fill in a form which saves to local storage the languages, countries and topics they want their newsfeed to contain. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<img src="./readme-assets/home-desktop.png"  width=400> 
+<img src="./readme-assets/home-mobile.png" width=200>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The user only has to fill this form once, but they do have the choice in their newsfeed to navigate back to their preferences if they do want to change it. 
 
-### `yarn eject`
+Once on the newsfeed, the user can filter through articles if they are interested in more than one category. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+From each article, the user can expand to read more and if they click on the category of the article that filters the newsfeed to the articles in that category.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+----
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Styling
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I used themes to change the appearance of the app based on the time of day. If it's after 8pm and before 8am the app has a dark theme, otherwise it has a light theme. Here is an example of an article in dark/light theme:
 
-## Learn More
+<img src="./readme-assets/themes.png"  width=600> 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+----
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Challenges
 
-### Code Splitting
+The hardest part of the project was using Memoize to cache two of my api request functions promises so that if a function is called twice with the same arguments, it will return the same cached value the second time. This makes the app faster and it ensures I don't make too many calls to the API (since it has a daily cap on how many calls you can make). Here is the code snippet:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```javascript
+const [articles, setData] = useState([]);
 
-### Analyzing the Bundle Size
+  useEffect(() => {
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+    //if a function is called twice with the same arguments, it will return the same cached value the second time.
+    const memoize = (method) => {
+      //I'm caching the promise returned by the method, not the final value. 
+      //SO I don’t need to wait for the async method to return anything, before we cache it’s future value.
+      return async function () {
+        let cache = {};
+        let args = JSON.stringify(arguments);
+        cache[args] = cache[args] || method.apply(this, arguments);
+        return cache[args];
+      };
+    }
 
-### Making a Progressive Web App
+    // 2. Get the top headlines from the sources returned from getSourcesData
+    const getArticlesData = memoize(async (source) => {
+      ...
+    });
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+    // 1. first I need to get the sources that may include articles with the user's choices
+    const getSourcesData = memoize(async (language, country, category) => {
+      ...
+    });
 
-### Advanced Configuration
+    const memoizedData = memoize(async () => {
+      let sourcesArray = await getSourcesData(language, country, category);
+      return sourcesArray ? await sourcesArray.map(getArticlesData) : null ;
+    })
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+    //After the first call, I’ll always get a cached result, even if I call one of these methods again before it has returned for the first time.
+    memoizedData();
 
-### Deployment
+  }, [category, country, language, token]);
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+This exercise definitely pushed my understanding of promises in JavaScript and all whilst using React Hooks syntax for the first time. 
 
-### `yarn build` fails to minify
+----
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Future features
+
+In the future, I was to continue building on the tests of the app to make sure they cover a lot more than they currently to. I also want to learn more about Redux so I will use this as a playground. 
+
+
+
