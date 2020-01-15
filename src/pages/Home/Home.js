@@ -34,7 +34,7 @@ const Home = () => {
         <FormSelect selectOptions={[...languages]} onChange={(e) => handleChangeLanguages(e.map(option => option.value))}/>
         <label>Countries</label>
         <FormSelect selectOptions={[...countries]} onChange={(e) => handleChangeCountries(e.map(option => option.value))}/>
-        <label>Topics</label>
+        <label>Categories</label>
         <FormSelect selectOptions={[...categories]} onChange={(e) => handleChangeCategories(e.map(option => option.value))}/>
         <div className='center'>
           <SubmitButton data-testid='formButton' onClick={(e) => submitForm(e)}>Let&apos;s Go</SubmitButton>

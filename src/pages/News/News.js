@@ -18,7 +18,7 @@ const News = () => {
   const resetLocalStorage = () => {
     localStorage.removeItem('languagesChosen');
     localStorage.removeItem('countriesChosen');
-    localStorage.removeItem('topicsChosen');
+    localStorage.removeItem('categoriesChosen');
     navigate('/preferences');
   };
 

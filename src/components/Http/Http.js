@@ -22,7 +22,6 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
 
     // 2. Get the top headlines from the sources returned from getSourcesData
     const getArticlesData = memoize(async (source) => {
-      console.log('articles');
       try {
         const res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source.id}&apiKey=${token}`);
         let articles = await res.json();
@@ -38,19 +37,21 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
     });
 
     // 1. first I need to get the sources that may include articles with the user's choices
-    const getSourcesData = memoize(async () => {
-      console.log(category);
+    const getSourcesData = memoize(async (language, country, category) => {
       try {
         const res = await fetch(`https://newsapi.org/v2/sources?language=${language}&country=${country}&category=${category}&apiKey=${token}`)
-        let sources = await res.json()
-        if (sources.sources.length) sources.sources.map(memoize(getArticlesData))
+        let { sources } = await res.json()
+        if (sources.length) return sources
       } catch (error) {
         console.log(error)
       };
     });
 
-    const memoizedData = memoize(getSourcesData);
-    
+    const memoizedData = memoize(async () => {
+      let sourcesArray = await getSourcesData(language, country, category);
+      return sourcesArray ? await sourcesArray.map(getArticlesData) : null ;
+    })
+
     //After the first call, I’ll always get a cached result, even if I call one of these methods again before it has returned for the first time.
     memoizedData();
 
@@ -58,7 +59,11 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
 
   return (
     <div>
-      <Newsfeed chosenCategory={chosenCategory} articles={articles} handleClick={handleClick}/>
+      {
+        articles.length &&
+        <Newsfeed chosenCategory={chosenCategory} articles={articles} handleClick={handleClick} />
+      }
+      
     </div>
   );
 };
