@@ -18,7 +18,7 @@ const Article = ({ article, handleClick }) => {
       {
         show && 
         <div data-testid='toggleDescription'>
-          <p>{article.description}</p>
+          <p><strong> {article.country} </strong> {article.description}</p>
           <CategoryButton onClick={() => handleClick(article.category)}>{article.category}</CategoryButton>
         </div>
       }

@@ -10,13 +10,16 @@ import Footer from './components/styled-components/Footer';
 // other components
 import Home from './pages/Home/Home';
 import News from './pages/News/News';
+import ErrorHandler from './pages/ErrorHandler/ErrorHandler';
 
 const localStorageCheck = localStorage.getItem('languagesChosen') ? true : false ;
 
 const routes = {
   '/': () => localStorageCheck ? <News /> : <Home />,
   '/preferences': () => <Home />,
-  '/news': () => <News />
+  '/news': () => <News />,
+  '/error': () => <ErrorHandler />,
+
 };
 
 const themeLight = {
@@ -41,7 +44,7 @@ const App = () => {
       <GlobalStyle />
       <Wrapper>
         <main data-testid='appContainer'>
-          {routeResult}
+          {routeResult || <ErrorHandler/> }
         </main>
         <Footer>
           <p>

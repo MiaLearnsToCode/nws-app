@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Newsfeed from '../Newsfeed/Newsfeed';
+import { navigate } from 'hookrouter';
 
 const Http = ({ language, country, category, chosenCategory, handleClick }) => {
 
@@ -32,7 +33,7 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
         });
         if (articles.length) setData(articles);
       } catch (error) {
-        console.log(error);
+        navigate('/error')
       };
     });
 
@@ -43,7 +44,7 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
         let { sources } = await res.json()
         if (sources.length) return sources
       } catch (error) {
-        console.log(error)
+        navigate('/error')
       };
     });
 
