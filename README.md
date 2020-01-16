@@ -23,14 +23,17 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 When the user first lands on the website they have to fill in a form which saves to local storage the languages, countries and topics they want their newsfeed to contain. 
 
-<img src="./readme-assets/home-desktop.png"  width=400> 
-<img src="./readme-assets/home-mobile.png" width=200>
+<img src="./readme-assets/home-mobile.png" width=400>
 
 The user only has to fill this form once, but they do have the choice in their newsfeed to navigate back to their preferences if they do want to change it. 
 
 Once on the newsfeed, the user can filter through articles if they are interested in more than one category. 
 
+<img src="./readme-assets/newsfeed-mobile.png" width=400>
+
 From each article, the user can expand to read more and if they click on the category of the article that filters the newsfeed to the articles in that category.
+
+<img src="./readme-assets/expand-mobile.png" width=400>
 
 ----
 
@@ -38,7 +41,7 @@ From each article, the user can expand to read more and if they click on the cat
 
 I used themes to change the appearance of the app based on the time of day. If it's after 8pm and before 8am the app has a dark theme, otherwise it has a light theme. Here is an example of an article in dark/light theme:
 
-<img src="./readme-assets/themes.png"  width=600> 
+<img src="./readme-assets/themes.png"  width=700> 
 
 ----
 

@@ -14,13 +14,20 @@ const Home = () => {
   const [languagesChosen, handleChangeLanguages] = useState([]);
   const [countriesChosen, handleChangeCountries] = useState([]);
   const [categoriesChosen, handleChangeCategories] = useState([]);
+  const [completed, fieldsCompleted] = useState(true);
 
   const submitForm = (e) => {
-    e.preventDefault()
-    localStorage.setItem('languagesChosen', JSON.stringify(languagesChosen));
-    localStorage.setItem('countriesChosen', JSON.stringify(countriesChosen));
-    localStorage.setItem('categoriesChosen', JSON.stringify(categoriesChosen));
-    navigate('/news');
+    if (languagesChosen.length && countriesChosen.length && categoriesChosen.length) {
+      e.preventDefault()
+      localStorage.setItem('languagesChosen', JSON.stringify(languagesChosen));
+      localStorage.setItem('countriesChosen', JSON.stringify(countriesChosen));
+      localStorage.setItem('categoriesChosen', JSON.stringify(categoriesChosen));
+      navigate('/news');
+    } else {
+      e.preventDefault()
+      fieldsCompleted(!completed)
+    }
+    
   };
 
   return (
@@ -37,6 +44,7 @@ const Home = () => {
         <label>Categories</label>
         <FormSelect selectOptions={[...categories]} onChange={(e) => handleChangeCategories(e.map(option => option.value))}/>
         <div className='center'>
+          {!completed && <small>Please fill in all the fields</small>} 
           <SubmitButton data-testid='formButton' onClick={(e) => submitForm(e)}>Let&apos;s Go</SubmitButton>
         </div>
         

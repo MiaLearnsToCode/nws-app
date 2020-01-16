@@ -3,7 +3,7 @@ import { navigate } from 'hookrouter';
 
 // styled components
 import Header from '../../components/styled-components/Header'
-import CategoryButton from '../../components/styled-components/styled-buttons/CategoryButton'
+import NavigationButton from '../../components/styled-components/styled-buttons/NavigationButton'
 import SubmitButton from '../../components/styled-components/styled-buttons/SubmitButton'
 
 // other components
@@ -32,10 +32,10 @@ const News = () => {
       <Header data-testid='headerContainer'>
         <h1>NWS</h1>
         <h2>Your Headlines</h2>
-        <nav className='center' data-testid='navContainer'>
+        <nav data-testid='navContainer'>
           {
             categoriesArray && categoriesArray.map((category,i) => {
-              return <CategoryButton onClick={() => handleClick(category)} key={i}>{category}</CategoryButton>
+              return <NavigationButton onClick={() => handleClick(category)} key={i}>{category}</NavigationButton>
             })
           }
         </nav>
@@ -45,7 +45,7 @@ const News = () => {
           categoriesArray && countriesArray && languagesArray && categoriesArray.map(category => {
             return countriesArray.map(country => {
               return languagesArray.map((language, i) => {
-                return <Http key={i} language={language} country={country} category={category} chosenCategory={chosenCategory} handleClick={handleClick}></Http>
+                return <Http key={i} language={language} country={country} category={category} chosenCategory={chosenCategory} handleClick={handleClick} />
               })
             })
           })

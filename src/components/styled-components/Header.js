@@ -15,7 +15,7 @@ const Header = styled.header`
   h2 {
     font-family: 'Montserrat', sans-serif;
     color: ${props => props.theme.text};
-    font-size: 20px;
+    font-size: 25px;
     line-height: 40px;
     letter-spacing: 5px;
     text-align: center;
@@ -28,17 +28,23 @@ const Header = styled.header`
     letter-spacing: 5px;
   }
   
-  .center {
-    flex-direction: row;
-    justify-content: center;
+  nav {
     margin-top: 80px;
   }
 
   @media screen and (min-width: 900px) { 
+    h2 {
+      font-size: 80px;
+    }
+
+    nav {
+      margin: 10% 20% 0% 20%;
+    }
+
     .news-feed {
       margin: 0px 20%;
     }
-}
+  }
 `;
 
 export default Header;

@@ -22,8 +22,8 @@ const routes = {
 };
 
 const themeLight = {
-  text: '#696969',
-  backGround: '#faf8f86e'
+  text: '#474747',
+  backGround: '#E8E8E8'
 };
 
 const themeDark = {
@@ -34,7 +34,7 @@ const themeDark = {
 const currentTime = new Date();
 const hours = currentTime.getUTCHours();
 
-const timeCheck = hours > 20 || hours < 8 ? themeDark : themeLight ;
+const timeCheck = hours > 14 || hours < 8 ? themeDark : themeLight ;
 
 const App = () => {
   const routeResult = useRoutes(routes);

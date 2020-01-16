@@ -27,7 +27,6 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
       try {
         const { data } = await get(`https://newsapi.org/v2/top-headlines?sources=${source.id}&apiKey=${token}`);
         let articles = data.articles.map(article => {
-          article.country = country;
           article.category = category;
           return article;
         });
@@ -41,7 +40,7 @@ const Http = ({ language, country, category, chosenCategory, handleClick }) => {
     const getSourcesData = memoize(async (language, country, category) => {
       try {
         const { data } = await get(`https://newsapi.org/v2/sources?language=${language}&country=${country}&category=${category}&apiKey=${token}`)
-        let { sources } = data.sources
+        let sources  = data.sources
         if (sources.length) return sources
       } catch (error) {
         navigate('/error')

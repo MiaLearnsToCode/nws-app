@@ -10,18 +10,22 @@ const Article = ({ article, handleClick }) => {
   return (
     <StyledArticle data-testid='articleContainer'>
       <img src={article.urlToImage} alt={article.title}/>
-      <h2><a href={article.url} rel='noopener noreferrer' target='_blank'>{article.title}</a></h2>
-      <h3>{article.source.name}</h3>
-      <ToggleButton data-testid='toggleButton' onClick={() => toggleShow(!show)}>
-        +
-      </ToggleButton>
-      {
-        show && 
-        <div data-testid='toggleDescription'>
-          <p><strong> {article.country} </strong> {article.description}</p>
-          <CategoryButton onClick={() => handleClick(article.category)}>{article.category}</CategoryButton>
-        </div>
-      }
+      <div>
+        <h2><a href={article.url} rel='noopener noreferrer' target='_blank'>{article.title}</a></h2>
+        <h3>{article.source.name}</h3>
+      
+        <ToggleButton data-testid='toggleButton' onClick={() => toggleShow(!show)}>
+          +
+        </ToggleButton>
+        {
+          show &&
+          <div data-testid='toggleDescription'>
+            <p><strong> {article.country} </strong> {article.description}</p>
+            <CategoryButton onClick={() => handleClick(article.category)}>{article.category}</CategoryButton>
+          </div>
+        }
+      </div>
+      
     </StyledArticle>
   );
 };

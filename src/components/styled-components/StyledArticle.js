@@ -27,10 +27,11 @@ const StyledArticle = styled.div`
     width: 80vw;
     border-radius: 1%;
   }
+  
 
   @media screen and (min-width: 900px) {
     margin: 5% 20%;
-
+    
     a {
       font-size: 30px;
       line-height: 60px;

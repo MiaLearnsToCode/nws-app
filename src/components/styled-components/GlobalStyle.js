@@ -28,6 +28,12 @@ const GlobalStyle = createGlobalStyle`
     justify-content: space-around;
     align-items: center;
   }
+
+  small {
+    margin: 20px;
+    color: ${props => props.theme.text};
+    font-family: 'Montserrat', sans-serif;
+  }
 `;
 
 export default GlobalStyle;

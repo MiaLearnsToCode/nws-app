@@ -11,6 +11,7 @@ const FormSelect = ({selectOptions, onChange}) => {
       closeMenuOnSelect={false}
       components={animatedComponents}
       isMulti
+      required
       onChange={onChange}
       options={selectOptions}
       styles={{ 
