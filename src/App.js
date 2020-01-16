@@ -34,7 +34,7 @@ const themeDark = {
 const currentTime = new Date();
 const hours = currentTime.getUTCHours();
 
-const timeCheck = hours > 14 || hours < 8 ? themeDark : themeLight ;
+const timeCheck = hours > 20 || hours < 8 ? themeDark : themeLight ;
 
 const App = () => {
   const routeResult = useRoutes(routes);
