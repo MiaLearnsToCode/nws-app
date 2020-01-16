@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Deployment
 
-The app is deployed on Netlify: https://nws-headlines.netlify.com
+The app is deployed on Netlify: https://nws-app.netlify.com
 
 ## Available Scripts
 
