@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and consumes the News Api (https://newsapi.org/docs). I undertook this project to push my understanding of test driven development, React Hooks, styled components and caching and also to practice using the React Select library I have been contributing to through open source.
 
+## Deployment
+
+The app is deployed on Netlify: https://nws-headlines.netlify.com
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -39,7 +43,7 @@ From each article, the user can expand to read more and if they click on the cat
 
 ## Styling
 
-I used themes to change the appearance of the app based on the time of day. If it's after 8pm and before 8am the app has a dark theme, otherwise it has a light theme. Here is an example of an article in dark/light theme:
+I used themes to change the appearance of the app based on the time of day. If it's after 8pm and before 8am the app has a dark theme, otherwise it has a light theme. Here is an example of the newsfeed in dark theme:
 
 <img src="./readme-assets/themes.png"  width=700> 
 
